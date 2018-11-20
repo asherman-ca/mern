@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-// already looks at api/users/...
+// @route   GET api/posts/test
+// @desc    Tests posts route
+// @access  Public
 
 router.get("/test", (req, res) => {
   res.json({
