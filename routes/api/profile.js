@@ -3,6 +3,9 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
 
+// load Input Validation
+const validateProfileInput = require("../../validation/profile");
+
 // load Profile model
 const Profile = require("../../models/Profile");
 // load User model
@@ -48,6 +51,12 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    const { errors, isValid } = validateProfileInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
     const profileFields = {};
     profileFields.user = req.user.id;
     if (req.body.handle) profileFields.handle = req.body.handle;
@@ -94,10 +103,6 @@ router.post(
         });
       }
     });
-
-    // if (req.body.experience) profileFields.experience = req.body.experience;
-    // if (req.body.education) profileFields.education = req.body.education;
-    // if (req.body.date) profileFields.date = req.body.date;
   }
 );
 
