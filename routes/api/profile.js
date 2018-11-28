@@ -44,7 +44,7 @@ router.get(
 // @desc    Create or edit user profile
 // @access  private
 
-router.get(
+router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {

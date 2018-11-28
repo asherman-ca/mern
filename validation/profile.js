@@ -7,14 +7,6 @@ module.exports = function validateProfileInput(data) {
   data.handle = !isEmpty(date.handle) ? data.handle : "";
   data.status = !isEmpty(data.status) ? data.status : "";
   data.skills = !isEmpty(data.skills) ? data.skills : "";
-  //   data.company = !isEmpty(data.company) ? data.company : "";
-  //   data.website = !isEmpty(data.website) ? data.website : "";
-  //   data.location = !isEmpty(data.location) ? data.location : "";
-  //   data.bio = !isEmpty(data.bio) ? data.bio : "";
-  //   data.githubusername = !isEmpty(data.githubusername)
-  // ? data.githubusername
-  // : "";
-  //   data.company = !isEmpty(data.company) ? data.company : "";
 
   if (!Validator.isLength(data.handle, { min: 2, max: 40 })) {
     errors.handle = "Handle needs to be between 2 and 4 characters";
@@ -67,10 +59,6 @@ module.exports = function validateProfileInput(data) {
       error.instagram = "Not a valid URL";
     }
   }
-
-  //   if (Validator.isEmpty(data.company)) {
-  //     error.company = "Company field is required";
-  //   }
 
   return {
     errors,
