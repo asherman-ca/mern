@@ -21,7 +21,7 @@ module.exports = function validateProfileInput(data) {
   }
 
   if (Validator.isEmpty(data.skills)) {
-    errors.skills = "Skills field is empty";
+    errors.skills = "Skills field is required";
   }
 
   if (!isEmpty(data.website)) {
