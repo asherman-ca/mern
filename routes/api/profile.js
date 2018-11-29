@@ -1,23 +1,23 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const mongoose = require("mongoose");
-const passport = require("passport");
+const mongoose = require('mongoose');
+const passport = require('passport');
 
 // load Input Validation
-const validateProfileInput = require("../../validation/profile");
+const validateProfileInput = require('../../validation/profile');
 
 // load Profile model
-const Profile = require("../../models/Profile");
+const Profile = require('../../models/Profile');
 // load User model
-const User = require("../../models/User");
+const User = require('../../models/User');
 
 // @route   GET api/profile/test
 // @desc    Tests profile route
 // @access  Public
 
-router.get("/test", (req, res) => {
+router.get('/test', (req, res) => {
   res.json({
-    msg: "Profile Works"
+    msg: 'Profile Works'
   });
 });
 
@@ -26,16 +26,16 @@ router.get("/test", (req, res) => {
 // @access  private
 
 router.get(
-  "/",
-  passport.authenticate("jwt", { session: false }),
+  '/',
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const errors = {};
 
     Profile.findOne({ user: req.user.id })
-      .populate("user", ["name", "avatar"])
+      .populate('user', ['name', 'avatar'])
       .then(profile => {
         if (!profile) {
-          errors.noprofile = "Profile not found for this user";
+          errors.noprofile = 'Profile not found for this user';
           return res.status(404).json(errors);
         }
         res.json(profile);
@@ -45,18 +45,48 @@ router.get(
 );
 
 // @route   GET api/profile/handle/:handle
-// @desc    Get profile by handle (seo)
+// @desc    Get profile by handle
 // @access  Public
 
-router.get("/handle/:handle", (req, res) => {});
+router.get('/handle/:handle', (req, res) => {
+  Profile.findOne({ handle: req.params.handle })
+    .populate('user', ['name', 'avatar'])
+    .then(profile => {
+      if (!profile) {
+        errors.noprofile = 'There is no profile for this user'
+        res.status(404).json(errors)
+      }
+
+      res.json(profile)
+    })
+    .catch(err => res.status(404).json(err))
+});
+
+// @route   GET api/profile/user/:user_id
+// @desc    Get profile by user ID
+// @access  Public
+
+router.get('/user/:user_id', (req, res) => {
+  Profile.findOne({ user: req.params.user_id })
+    .populate('user', ['name', 'avatar'])
+    .then(profile => {
+      if (!profile) {
+        errors.noprofile = 'There is no profile for this user'
+        res.status(404).json(errors)
+      }
+
+      res.json(profile)
+    })
+    .catch(err => res.status(404).json(err))
+});
 
 // @route   POST api/profile
 // @desc    Create or edit user profile
 // @access  private
 
 router.post(
-  "/",
-  passport.authenticate("jwt", { session: false }),
+  '/',
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const { errors, isValid } = validateProfileInput(req.body);
 
@@ -76,7 +106,7 @@ router.post(
       profileFields.githubusername = req.body.githubusername;
     // split skills into array
     if (typeof req.body.skills !== undefined) {
-      profileFields.skills = req.body.skills.split(",");
+      profileFields.skills = req.body.skills.split(',');
     }
     // if (req.body.social) profileFields.social = req.body.social;
     profileFields.social = {};
@@ -101,7 +131,7 @@ router.post(
         Profile.findOne({ handle: profileFields.handle }).then(profile => {
           if (profile) {
             // we've found the profile with the same handle we want to use
-            errors.handle = "That handle already exists";
+            errors.handle = 'That handle already exists';
             res.status(400).json(errors);
           }
 
