@@ -3,6 +3,7 @@ Node (express) -> React (Redux)
 vscode extensions:
 -Bracket Pair Colorizer
 -ES7 React/Redux/GraphQL/React-Native Snippets
+---commonly used snippets: rcc
 -Live Server
 -Node.js Modules Intellisense
 -Prettier - Code Formatter
