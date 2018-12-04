@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Landing extends Component {
   render() {
@@ -8,19 +9,19 @@ class Landing extends Component {
           <div class="container">
             <div class="row">
               <div class="col-md-12 text-center">
-                <h1 class="display-3 mb-4">Sandbox Webapp</h1>
+                <h1 class="display-3 mb-4">Feature Sandbox</h1>
                 <p class="lead">
                   {' '}
                   Create a Sandbox profile, share posts and get help from other
-                  sandboxers
+                  Sandboxers
                 </p>
                 <hr />
-                <a href="register.html" class="btn btn-lg btn-info mr-2">
+                <Link to="/register" className="btn btn-lg btn-info mr-2">
                   Sign Up
-                </a>
-                <a href="login.html" class="btn btn-lg btn-light">
+                </Link>
+                <Link to="/login" className="btn btn-lg btn-light">
                   Login
-                </a>
+                </Link>
               </div>
             </div>
           </div>
