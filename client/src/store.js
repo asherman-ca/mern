@@ -15,6 +15,6 @@ const store = createStore(
   )
 );
 
-// compose holds applymiddleware in order to wire in redux extension
+// compose combines middlewars in order to accomodate the redux extension
 
 export default store;
