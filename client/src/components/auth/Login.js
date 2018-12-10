@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 import classnames from 'classnames';
@@ -112,4 +111,4 @@ Login.propTypes = {
 export default connect(
   mapStateToProps,
   { loginUser }
-)(withRouter(Login));
+)(Login);
