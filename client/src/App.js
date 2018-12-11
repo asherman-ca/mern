@@ -1,12 +1,11 @@
 // Provider provides application with the store (global state)
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logOutUser } from './actions/authActions';
-
-import { Provider } from 'react-redux';
-import store from './store.js';
+import { clearCurrentProfile } from './actions/profileActions';
 
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -15,6 +14,7 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
 
+import store from './store.js';
 import './App.css';
 
 // check for token
@@ -31,8 +31,8 @@ if (localStorage.jwtToken) {
   if (decoded.exp < currentTime) {
     // logout user
     store.dispatch(logOutUser);
-    // TODO: clear current profile
-    //
+    // clear current profile
+    store.dispatch(clearCurrentProfile);
     //
     // Reduirect to login
     window.location.href = './login';
