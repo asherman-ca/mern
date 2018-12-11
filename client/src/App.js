@@ -33,11 +33,12 @@ if (localStorage.jwtToken) {
 
   console.log(currentTime);
   console.log(decoded);
-  if (decoded.exp > currentTime) {
+  if (decoded.exp < currentTime) {
     // logout user
+    console.log('hitsdecode');
     store.dispatch(logOutUser());
     // clear current profile
-    store.dispatch(clearCurrentProfile);
+    store.dispatch(clearCurrentProfile());
     //
     // Redirect to login
     window.location.href = './login';
