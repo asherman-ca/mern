@@ -1,4 +1,3 @@
-// Provider provides application with the store (global state)
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -36,7 +35,6 @@ if (localStorage.jwtToken) {
     store.dispatch(logOutUser());
     // clear current profile
     store.dispatch(clearCurrentProfile());
-    //
     // Redirect to login
     window.location.href = './login';
   }
