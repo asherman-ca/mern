@@ -25,3 +25,13 @@ password: password2
 name: test3
 email: test3@gmail.com
 password: password3
+
+important notes:
+-if you want to redirect from an action, you need withRouter
+
+!!!Next Project Name!!!:
+Rolladex
+
+Bootstrap Notes:
+-containers push everything to the middle
+-"col-md-8 m-auto" = 8 an eight column div centered using margin auto
