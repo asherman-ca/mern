@@ -6,6 +6,8 @@ import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
 import Spinner from '../common/Spinner';
 // import { isError } from 'util';
 import ProfileActions from './ProfileActions';
+import Experience from './Experience';
+import Education from './Education';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -35,6 +37,8 @@ class Dashboard extends Component {
               <Link to={`/profile/${profile.handle}`}>{profile.handle}</Link>
             </p>
             <ProfileActions />
+            <Experience experience={profile.experience} />
+            <Education education={profile.education} />
             {/* TODO: exp and edu */}
             <div style={{ marginBottom: '60px' }} />
             <button
