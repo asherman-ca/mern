@@ -40,9 +40,9 @@ export const createProfile = (profileData, history) => dispatch => {
 };
 
 // Add Experience
-export const addExperience = (experienceData, history) => dispatch => {
+export const addExperience = (expData, history) => dispatch => {
   axios
-    .post('./api/profile/experience', experienceData)
+    .post('./api/profile/experience', expData)
     .then(res => history.push('/dashboard'))
     .catch(err =>
       dispatch({
@@ -52,9 +52,9 @@ export const addExperience = (experienceData, history) => dispatch => {
     );
 };
 
-export const addEducation = (educationData, history) => dispatch => {
+export const addEducation = (eduData, history) => dispatch => {
   axios
-    .post('./api/profile/education', educationData)
+    .post('./api/profile/education', eduData)
     .then(res => history.push('./dashboard'))
     .catch(err =>
       dispatch({

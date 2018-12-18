@@ -22,9 +22,9 @@ module.exports = function validateEducationInput(data) {
     errors.from = 'From field is required';
   }
 
-  if (Validator.isEmpty(data.to)) {
-    errors.to = 'To field is required';
-  }
+  // if (Validator.isEmpty(data.to)) {
+  //   errors.to = 'To field is required';
+  // }
 
   if (Validator.isEmpty(data.field)) {
     errors.field = 'Field field is required';
