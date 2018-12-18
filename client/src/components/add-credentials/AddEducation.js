@@ -11,14 +11,12 @@ class AddEducation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      schoool: '',
+      school: '',
       degree: '',
       field: '',
       from: '',
       to: '',
-      current: '',
-      decription: '',
-      disabled: false,
+      description: '',
       errors: {}
     };
 
@@ -111,22 +109,7 @@ class AddEducation extends Component {
                   error={errors.to}
                   type="date"
                   info="to Date"
-                  disabled={this.state.disabled ? 'disabled' : ''}
                 />
-                <div className="form-check mb-4">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    name="current"
-                    value={this.state.current}
-                    onChange={this.onCheck}
-                    checked={this.state.current}
-                    id="current"
-                  />
-                  <label htmlFor="current" className="form-check-label">
-                    Current Job
-                  </label>
-                </div>
                 <TextAreaFieldGroup
                   placeholder="Program Description"
                   name="description"

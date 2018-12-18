@@ -16,10 +16,10 @@ class AddExperience extends Component {
       location: '',
       from: '',
       to: '',
-      current: false,
       description: '',
-      errors: {},
-      disabled: false
+      current: false,
+      disabled: false,
+      errors: {}
     };
 
     this.onSubmit = this.onSubmit.bind(this);

@@ -118,6 +118,8 @@ router.post(
 
     const profileFields = {};
     profileFields.user = req.user.id;
+
+    // these expressions prevent users from clearing their fields by sending back open strings
     if (req.body.handle) profileFields.handle = req.body.handle;
     if (req.body.company) profileFields.company = req.body.company;
     if (req.body.website) profileFields.website = req.body.website;
@@ -126,6 +128,7 @@ router.post(
     if (req.body.bio) profileFields.bio = req.body.bio;
     if (req.body.githubusername)
       profileFields.githubusername = req.body.githubusername;
+
     // split skills into array
     if (typeof req.body.skills !== undefined) {
       profileFields.skills = req.body.skills.split(',');

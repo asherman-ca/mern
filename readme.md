@@ -35,3 +35,7 @@ Rolladex
 Bootstrap Notes:
 -containers push everything to the middle
 -"col-md-8 m-auto" = 8 an eight column div centered using margin auto
+
+KNOWN ISSUES:
+-the profile updating route doesn't allow users to clear field by deleting them and submitting.
+-the profile post route needs slight logic change to allow for this.
