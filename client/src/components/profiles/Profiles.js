@@ -20,7 +20,7 @@ class Profiles extends Component {
       if (profiles.length > 0) {
         profileItems = profiles
           .slice(0, 10)
-          .map((item, index) => <ProfileItem profile={item} key={index} />);
+          .map(item => <ProfileItem profile={item} key={item._id} />);
       } else {
         profileItems = <h4>No profiles found</h4>;
       }
