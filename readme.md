@@ -39,3 +39,4 @@ Bootstrap Notes:
 KNOWN ISSUES:
 -the profile updating route doesn't allow users to clear field by deleting them and submitting.
 -the profile post route needs slight logic change to allow for this.
+-Error: listen EADDRINUSE: results from port remaining open, use "killall -9 node" to fix
