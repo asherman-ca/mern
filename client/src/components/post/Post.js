@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Spinner from '../common/Spinner';
 import { getPost } from '../../actions/postActions';
 import PostItem from '../posts/PostItem';
+import CommentForm from './CommentForm';
 
 class Post extends Component {
   componentDidMount() {
@@ -34,6 +35,7 @@ class Post extends Component {
                 Back To Feed
               </Link>
               {postContent}
+              <CommentForm postId={post._id} />
             </div>
           </div>
         </div>
