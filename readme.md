@@ -28,6 +28,7 @@ password: password3
 
 important notes:
 -if you want to redirect from an action, you need withRouter
+-commentItem is good example of what-to-proptype
 
 !!!Next Project Name!!!:
 Rolladex
