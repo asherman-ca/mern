@@ -42,6 +42,7 @@ class PostForm extends Component {
 
   render() {
     const { errors } = this.state;
+    // const { errors } = this.props;
 
     return (
       <div className="post-form mb-3">
